@@ -1,11 +1,16 @@
 package top.linesoft.open2share
 
+import android.graphics.Color
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
+import androidx.core.text.HtmlCompat.FROM_HTML_MODE_LEGACY
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import top.linesoft.open2share.databinding.ActivityGuideBinding
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class GuideActivity : AppCompatActivity() {
     private lateinit var binding: ActivityGuideBinding
@@ -22,6 +27,12 @@ class GuideActivity : AppCompatActivity() {
         binding.toolbar.setNavigationOnClickListener {
             finish()
         }
-        binding.webView.loadUrl("file:///android_asset/guide.html")
+        binding.textview.highlightColor = Color.TRANSPARENT
+        val guideReader = BufferedReader(InputStreamReader(assets.open("guide.html")))
+        binding.textview.text = HtmlCompat.fromHtml(
+            guideReader.readText(),
+            FROM_HTML_MODE_LEGACY
+        )
+        guideReader.close()
     }
 }

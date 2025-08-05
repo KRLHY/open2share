@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".GuideActivity">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,10 +21,12 @@
         app:title="@string/guide"
         app:titleTextColor="@color/black" />
 
-    <WebView
-        android:id="@+id/webView"
+    <TextView
+        android:id="@+id/textview"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:autoLink="web"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
